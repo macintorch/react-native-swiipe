@@ -19,7 +19,7 @@ const DATA = [
 export default class App extends React.Component {
 
   renderCard(item) {
-    return (
+    return(
      <Card
      key={item.id}
       title={item.text}
