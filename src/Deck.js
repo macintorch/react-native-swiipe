@@ -58,6 +58,12 @@ class Deck extends Component {
 		const item = data[this.state.index];
 
 		direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+
+		// reset card position to (0,0)
+		this.state.position.setValue({ x: 0, y:0 });
+
+		//reset the index
+		this.setState({ index: this.state.index + 1 });
 	}
 
 	resetPosition() {
@@ -82,8 +88,11 @@ class Deck extends Component {
 	}
 
 	renderCards() {
-		return this.props.data.map((item, index) => {
-			if (index === 0) {
+		return this.props.data.map((item, i) => {
+
+			if(i < this.state.index) { return null;}
+
+			if (i === this.state.index) {
 				return (
 						<Animated.View
 							key={item.id}
