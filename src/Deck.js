@@ -103,7 +103,7 @@ class Deck extends Component {
 				return (
 						<Animated.View
 							key={item.id}
-							style={[this.getCardStyle(), styles.cardStyle, { 'zIndex': 100 }]}
+							style={[this.getCardStyle(), styles.cardStyle, { zIndex: 100 }]} // interpolated dynamic style animation + multiple styles in array!
 							{...this.state.panResponder.panHandlers} 
 						>
 						{this.props.renderCard(item)}
@@ -111,11 +111,11 @@ class Deck extends Component {
 					);
 			}
 			return (
-				<View 
+				<Animated.View 
 				key={item.id}
 				style={[styles.cardStyle, { top: 10 * (i - this.state.index)}, { zIndex: 100 - i} ]}>
 				 	{this.props.renderCard(item)}
-				</View>
+				</Animated.View>
 				);
 		}).reverse();
 	}
@@ -132,7 +132,8 @@ class Deck extends Component {
 const styles = {
 	cardStyle: {
 		position: 'absolute',
-		width: SCREEN_WIDTH
+		width: SCREEN_WIDTH,
+		zIndex: 1
 	}
 };
 
